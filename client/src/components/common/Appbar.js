@@ -31,11 +31,7 @@ function ResponsiveAppBar() {
 
   const handleLogoutClick = () => {
     logout();
-    if (window.location.pathname === "/") {
-      window.location.reload();
-    } else {
-      navigate("/");
-    }
+    navigate("/");
   };
 
   const buttonStyle = {

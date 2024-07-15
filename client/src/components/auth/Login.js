@@ -2,6 +2,7 @@ import { Container, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import coverifyLogo from "../../assets/images/CoverifyLogo.png";
+import { useAuth } from "../auth/AuthContext";
 
 const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
@@ -27,8 +28,9 @@ const getReturnedParamsFromSpotifyAuth = (hash) => {
   }, {});
 };
 
-const Login = ({ onLoginSuccess }) => {
+const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,10 +43,10 @@ const Login = ({ onLoginSuccess }) => {
       localStorage.setItem("tokenType", token_type);
       localStorage.setItem("expiresIn", expires_in);
 
-      onLoginSuccess();
+      login();
       setIsLoggedIn(true);
 
-      if (access_token && isLoggedIn) {
+      if (access_token) {
         navigate("/playlistselect");
       }
     } else {
@@ -53,7 +55,7 @@ const Login = ({ onLoginSuccess }) => {
         setIsLoggedIn(true);
       }
     }
-  }, [onLoginSuccess, navigate, isLoggedIn]);
+  }, [login, navigate]);
 
   const buttonStyle = {
     marginTop: "20px",

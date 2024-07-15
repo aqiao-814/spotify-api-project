@@ -4,12 +4,14 @@ import axios from "axios";
 import "../../assets/css/Covers.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const Covers = () => {
   const { playlistName } = useParams();
   const [coverImages, setCoverImages] = useState([]);
   const [imagesGenerated, setImagesGenerated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
   const initialMount = useRef(true);
 
   const generatePrompt = (artists, titles) => {
@@ -21,6 +23,7 @@ const Covers = () => {
 
     try {
       setLoading(true);
+      setErrorMessage("");
       const accessToken = localStorage.getItem("accessToken");
       const storedPlaylistId = localStorage.getItem("playlistID");
 
@@ -75,6 +78,11 @@ const Covers = () => {
       }
     } catch (error) {
       console.error("Error fetching top songs:", error);
+      if (error.response && error.response.status === 429) {
+        setErrorMessage("Please try again in a minute.");
+      } else {
+        setErrorMessage("An error occurred. Please try again later.");
+      }
     } finally {
       setLoading(false);
     }
@@ -96,7 +104,11 @@ const Covers = () => {
 
       return response.data.imageUrls;
     } catch (error) {
-      console.error("Error generating images:", error);
+      console.error("Error generating images:", error.response.status);
+      setErrorMessage(
+        "Please try again in a minute or check if you have sufficient OpenAI credits."
+      );
+
       throw error;
     }
   };
@@ -111,6 +123,17 @@ const Covers = () => {
           minHeight="100vh"
         >
           <CircularProgress />
+        </Box>
+      ) : errorMessage ? (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="100vh"
+        >
+          <Typography variant="h6" color="error">
+            {errorMessage}
+          </Typography>
         </Box>
       ) : (
         <>
