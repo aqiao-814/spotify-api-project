@@ -12,7 +12,10 @@ The Coverify project is a user-friendly Spotify playlist cover generator designe
 - [@lli205](https://github.com/lli205)
 - [@michelleshin34](https://github.com/michelleshin34)
 
-### Usage Instructions
+## Demo
+
+
+## Usage Instructions
 
 1. **Set Up the Server**
 
