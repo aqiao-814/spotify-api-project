@@ -1,0 +1,61 @@
+/* PlaylistSel.css */
+
+.playlist-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px 5%; /* Use percentage for padding */
+}
+
+.playlist-text {
+  /* Choose a playlist */
+  text-align: left;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.playlists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Update the selector to target the new class name for buttons */
+.playlist-button {
+  /* playlist black boxes */
+  width: calc(33.33% - 5%); /* Use percentage for width and adjust padding */
+  margin-bottom: 4%; /* Use percentage for margin */
+  background-color: rgb(32, 32, 32);
+  border: 1px solid white;
+  color: white;
+  padding: 2.5%; /* Use percentage for padding */
+  box-sizing: border-box;
+  text-align: left;
+  margin-left: 2.5%; /* Use percentage for margin */
+  border-radius: 10px;
+  min-height: 150px; /* Use percentage for height or adjust as needed */
+  font-family: "Arial", sans-serif;
+  font-size: 2vw; /* Use viewport width for font size */
+
+  /* Add transition for scaling */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Update the selector to target images inside the new class name for buttons */
+.playlist-button img {
+  width: 20vw; /* Set a percentage of the viewport width */
+  height: 20vw; /* Set a percentage of the viewport width */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.playlist-button:hover {
+  transform: scale(1.02); /* Adjust the scaling factor as needed */
+  background-color: #191414; /* Change background color on hover */
+}
+
+.no-underline {
+  text-decoration: none;
+  /* Add any other desired styles here */
+}
