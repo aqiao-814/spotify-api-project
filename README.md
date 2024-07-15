@@ -6,7 +6,16 @@ The Coverify project is a user-friendly Spotify playlist cover generator designe
 
 - This project uses OpenAI's DALL-E API to generate images based on user prompts. Please note that using DALL-E is a paid feature, and you must ensure your OpenAI account has sufficient credits. We are actively working on switching to a free version in the future.
 
-### Usage Instructions
+### The Team
+- [@aqiao-814](https://github.com/aqiao-814)
+- [@shsing2](https://github.com/shsing2)
+- [@lli205](https://github.com/lli205)
+- [@michelleshin34](https://github.com/michelleshin34)
+
+## Demo
+
+
+## Usage Instructions
 
 1. **Set Up the Server**
 
